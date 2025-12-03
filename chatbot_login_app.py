@@ -1130,18 +1130,7 @@ st.markdown("""
             border: 1px solid #334466;
             min-height: 50px;
         }
-        .status-card {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-        }
-        .status-card.red { background-color: #9c3f3f; border-left: 5px solid #ff0000; } /* Critical */
-        .status-card.yellow { background-color: #9c843f; border-left: 5px solid #ffbf00; } /* Warning */
-        .status-card.green { background-color: #4b8d4b; border-left: 5px solid #00ff00; } /* Healthy */
-        .status-card h5 { margin-top: 0; color: white; }
-        .big-value { font-size: 2.5em; font-weight: bold; }
+        
     </style>
 """, unsafe_allow_html=True)
 
