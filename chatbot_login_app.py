@@ -815,7 +815,7 @@ def initialize_database_schema():
         # Connection is closed, force re-creation
         st.cache_resource.clear()
         conn = get_db_connection()
-        #st.rerun()
+        st.rerun()
         return
 
     cursor = conn.cursor()
@@ -1196,7 +1196,7 @@ def navigate_to_register():
 
 def navigate_to_home():
     # --- NEW: Check if Admin is using the Home Navigation ---
-    admin_email = "admin@example.com"
+    admin_email = "admin@buddybot.com"
     if st.session_state.get('logged_in_email') == admin_email:
         st.session_state.page = 'admin'
         st.query_params['page'] = 'admin'
@@ -1219,6 +1219,7 @@ def navigate_to_workspace():
 def navigate_to_feedback_page():
     """Custom router for the new page."""
     st.session_state.page = 'feedback_module'
+    #st.query_params['page'] = 'feedback_module'
 # CODE MODIFIED (Around line 105)
 def navigate_to_action_choice():
     st.session_state.page = 'action_choice'
@@ -1981,7 +1982,7 @@ def show_admin_portal():
     # ----------------------------------------------------
     # A. Access Control (CRITICAL)
     # ----------------------------------------------------
-    admin_email = "admin@example.com"
+    admin_email = "admin@buddybot.com"
 
     if st.session_state.get('logged_in_email') != admin_email:
         st.error("ACCESS DENIED: You must be logged in as the Administrator to view this portal.")
@@ -2683,6 +2684,7 @@ def show_feedback_page():
         st.session_state.workspace_action = None
         navigate_to_action_choice()
         st.rerun()
+        
 # ===============================
 # PAGE DISPLAY FUNCTIONS
 # ===============================
@@ -4066,7 +4068,7 @@ def show_login_page():
                 log_activity(email, "LOGIN", "Successful login from UI.")
                 
                 # --- NEW ADMIN NAVIGATION LOGIC ---
-                admin_email = "admin@example.com" # Define admin email locally
+                admin_email = "admin@buddybot.com" # Define admin email locally
                 if email == admin_email:
                     navigate_to_admin() # Direct admin to admin portal
                 else:
@@ -4110,9 +4112,8 @@ def show_policy_page():
 show_sidebar_content()
 
 # Reroute all pages that are set by the action-setting callbacks (1-to-1 page routing)
-if st.session_state.page == 'workspace':
-    show_workspace_page()
-elif st.session_state.page == 'annotate': 
+
+if st.session_state.page == 'annotate': 
     show_annotation_page()
 elif st.session_state.page == 'feedback_module': # ADD THIS LINE
     show_feedback_page()
@@ -4128,6 +4129,8 @@ elif st.session_state.page == 'home':
     show_home_page()
 elif st.session_state.page == 'create_workspace':
     show_create_workspace_page()
+elif st.session_state.page == 'workspace':
+    show_workspace_page()
 elif st.session_state.page == 'action_choice':
     # CRITICAL FIX: This is the missing piece that ensures the Action Choice page loads.
     show_action_choice_page() 
