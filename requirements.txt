@@ -1,5 +1,7 @@
 streamlit
-bcrypt
+plotly
+matplotlib
 pandas
 numpy
+bcrypt
 requests
