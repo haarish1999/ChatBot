@@ -3711,6 +3711,7 @@ def show_evaluation_page():
                         pass
                 else:
                     st.error("Please provide a version name.")
+        
 
 
     # ----------------------------------------------------
@@ -3797,11 +3798,15 @@ def show_evaluation_page():
 
 
     # --- Back Button (Remains the same) ---
+    # Near the end of def show_evaluation_page():
+
+ # --- Back Button (Remains the same) ---
     st.markdown("---")
-    if st.button("← Change Action", key="back_from_evaluate_model"):
+    if st.button("← Change Action", key="back_from_evaluate_model"): # KEEP THIS ONE
         st.session_state.workspace_action = None
         navigate_to_action_choice()
         st.rerun()
+    
                     
     
 
@@ -3922,10 +3927,6 @@ def display_confusion_matrix(model1_version, model2_version, history_df):
         )
         st.caption(f"Rows = **True Intent** (Actual Label); Columns = **Predicted Intent**.")            
     st.markdown("---")
-    if st.button("← Change Action", key="back_from_evaluate_model"):
-        st.session_state.workspace_action = None
-        navigate_to_action_choice()
-        st.rerun()
 
 # ==============================
 # WORKSPACE / CHAT PAGE (RESTRICTED BY ACTION)
